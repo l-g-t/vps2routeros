@@ -30,8 +30,10 @@ ADDRESS=$(ip addr show $MAIN_INTERFACE | grep global | cut -d' ' -f 6 | head -n 
 GATEWAY=$(ip route list | grep default | cut -d' ' -f 3)
 
 # URL to RouterOS CHR
-ROUTEROS_URL=https://download2.mikrotik.com/routeros/6.43.14/chr-6.43.14.img.zip
-
+#ROUTEROS_URL=https://download2.mikrotik.com/routeros/6.43.14/chr-6.43.14.img.zip
+#ROUTEROS_URL=https://2688.eu.org/chr-6.49.15.img.zip
+#ROUTEROS_URL=https://2688.eu.org/chr-7.15.3.img.zip
+ROUTEROS_URL=https://2688.eu.org/chr-7.16.img.zip
 # Note: you can customize commands to be executed when RouterOS initializes.
 # Search `Auto configure script` below
 # do not modify that unless you know what you are doing
@@ -71,8 +73,10 @@ echo -e "\nIf you continue, your disk will be formatted and no data will be pres
 confirm || exit -1
 
 echo "installing packages"
-apt-get update -y
-apt-get install -y qemu-utils pv psmisc parted
+#apt-get update -y
+#apt-get install -y qemu-utils pv psmisc parted
+apk update
+apk add qemu-img pv psmisc parted
 
 echo "download image"
 wget ${ROUTEROS_URL} -O chr.img.zip
