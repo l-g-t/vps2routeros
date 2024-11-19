@@ -76,7 +76,8 @@ echo "installing packages"
 #apt-get update -y
 #apt-get install -y qemu-utils pv psmisc parted
 apt-get update
-apt-get install qemu-img pv psmisc parted
+apt-get install  qemu-utils pv psmisc parted
+#apt-get install qemu-img pv psmisc parted
 
 echo "download image"
 wget ${ROUTEROS_URL} -O chr.img.zip
